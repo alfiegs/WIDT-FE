@@ -15,7 +15,7 @@ import axios from 'axios'; //like fetch, except without intermediate function to
 
 export const signup = (formProps, callback) => async dispatch => {
     try{ //if code in here fails, send error
-    let response = await axios.post('https://fathomless-forest-85141.herokuapp.com/signup', formProps) //posting this data to signup route, should receive JWT. using async await, awaiting response before executing next code
+    let response = await axios.post('/signup', formProps) //posting this data to signup route, should receive JWT. using async await, awaiting response before executing next code
     console.log(response)
     //dispatch 
     dispatch({type: AUTH_USER, payload: response.data.token, id: response.data.id})
