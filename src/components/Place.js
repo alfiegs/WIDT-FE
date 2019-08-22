@@ -4,7 +4,7 @@ import StarRating from './StarRating';
 import { saveToDB } from '../actions';
 import {connect} from 'react-redux';
 import requireAuth from '../requireAuth';
-import config from '../config'
+// import config from '../config'
 
 
 class Place extends React.Component {
@@ -37,7 +37,7 @@ class Place extends React.Component {
         e.preventDefault();
         let placeQuery = this.state.query
         let key = config.GooglePlacesKey
-        let apiurl = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${placeQuery}&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=${key}`;
+        let apiurl = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${placeQuery}&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyD3go5v5PSAXk4Ni28gk8EVpUnL14iNgdQ`;
         fetch("https://cors-anywhere.herokuapp.com/" + apiurl)
             .then((response)=>{
                 return response.json()
