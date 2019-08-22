@@ -4,7 +4,7 @@ import StarRating from './StarRating';
 import { saveToDB } from '../actions';
 import {connect} from 'react-redux';
 import requireAuth from '../requireAuth';
-import config from '../../src/config'
+import config from '../config'
 
 
 class Place extends React.Component {
