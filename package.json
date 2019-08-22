@@ -29,7 +29,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "process.env.PORT",
+  "proxy": "https://fathomless-forest-85141.herokuapp.com",
   "eslintConfig": {
     "extends": "react-app"
   },
