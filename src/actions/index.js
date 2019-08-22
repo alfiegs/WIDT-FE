@@ -1,7 +1,7 @@
 import {AUTH_USER, AUTH_ERROR, SAVE_STAR, SEND_ID} from './types';
 import axios from 'axios'; //like fetch, except without intermediate function to convert data to JSON
 
-
+var url = "https://fathomless-forest-85141.herokuapp.com"
 
 // export const signup = ({email, password}) => {
 //     return(dispatch => {
@@ -15,7 +15,7 @@ import axios from 'axios'; //like fetch, except without intermediate function to
 
 export const signup = (formProps, callback) => async dispatch => {
     try{ //if code in here fails, send error
-    let response = await axios.post('/signup', formProps) //posting this data to signup route, should receive JWT. using async await, awaiting response before executing next code
+    let response = await axios.post(`${url}/signup`, formProps) //posting this data to signup route, should receive JWT. using async await, awaiting response before executing next code
     console.log(response)
     //dispatch 
     dispatch({type: AUTH_USER, payload: response.data.token, id: response.data.id})
@@ -32,7 +32,7 @@ export const signup = (formProps, callback) => async dispatch => {
 
 export const signin = (formProps, callback) => async dispatch => {
     try{
-        let response = await axios.post('/signin', formProps);
+        let response = await axios.post(`${url}/signin`, formProps);
         // console.log(response.data.id)
         dispatch({type: AUTH_USER, payload: response.data.token, id: response.data.id})
         localStorage.setItem('token', response.data.token) //storing JWT inside local storage (cookies)
@@ -58,12 +58,12 @@ export const signout = () => {
 
 export const saveToDB = (data) => async dispatch => {
     // console.log(data)
-    axios.post('/savedata', {userid: data.userid, title: data.title, note: data.note, rating:data.rating, username:data.username})
+    axios.post(`${url}/savedata`, {userid: data.userid, title: data.title, note: data.note, rating:data.rating, username:data.username})
 }
 
 export const saveFriendToDB = (data) => async dispatch => {
     console.log(data)
-    axios.post('/saveFriendData', {friendemail: data.friendemail, friendid: data.friendid, userid: data.userid})
+    axios.post(`${url}/saveFriendData`, {friendemail: data.friendemail, friendid: data.friendid, userid: data.userid})
 }
 
 export function saveStar(starRating) {
@@ -77,12 +77,12 @@ export function saveStar(starRating) {
 
 export const saveIdAction = (id) => async dispatch => {
     console.log(id.id)
-    axios.post('/friendsTable', {id: id})
+    axios.post(`${url}/friendsTable`, {id: id})
 }
 
 export const saveVisitor = (data) => async dispatch => {
     console.log(data.comment)
-    axios.post('/visitorsTable', {name: data.name, email: data.email, comment: data.comment})
+    axios.post(`${url}/visitorsTable`, {name: data.name, email: data.email, comment: data.comment})
 }
 
 
